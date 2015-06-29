@@ -27,8 +27,8 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".UpdateStatusActivity"
-            android:label="@string/title_activity_update_status" />
+            android:name=".CreateNoteActivity"
+            android:label="@string/title_activity_create_note" />
         <activity
             android:name=".NoteDetailsActivity"
             android:label="@string/title_activity_note_details" >

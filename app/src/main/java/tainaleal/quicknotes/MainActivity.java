@@ -69,7 +69,7 @@ public class MainActivity extends ListActivity {
         //noinspection SimplifiableIfStatement
         switch (id){
             case R.id.updateStatus:
-                Intent directUserUpdate = new Intent(MainActivity.this, UpdateStatusActivity.class);
+                Intent directUserUpdate = new Intent(MainActivity.this, CreateNoteActivity.class);
                 startActivity(directUserUpdate);
                 break;
 

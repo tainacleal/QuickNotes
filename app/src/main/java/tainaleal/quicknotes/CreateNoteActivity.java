@@ -18,7 +18,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 
-public class UpdateStatusActivity extends Activity {
+public class CreateNoteActivity extends Activity {
 
     protected EditText updatedStatus;
     protected Button buttonUpdate;
@@ -26,7 +26,7 @@ public class UpdateStatusActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_status);
+        setContentView(R.layout.activity_create_note);
 
         updatedStatus = (EditText)findViewById(R.id.updateStatusBox);
         buttonUpdate = (Button)findViewById(R.id.updateButton);
@@ -39,7 +39,7 @@ public class UpdateStatusActivity extends Activity {
                 String status = updatedStatus.getText().toString();
 
                 if (status.isEmpty()) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(UpdateStatusActivity.this);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(CreateNoteActivity.this);
                     alert.setMessage("Status can't be empty.");
                     alert.setTitle("Oops!");
                     alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -59,12 +59,12 @@ public class UpdateStatusActivity extends Activity {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-                                Toast.makeText(UpdateStatusActivity.this, "Status Updated!", Toast.LENGTH_LONG).show();
-                                Intent directUserHome = new Intent(UpdateStatusActivity.this, MainActivity.class);
+                                Toast.makeText(CreateNoteActivity.this, "Status Updated!", Toast.LENGTH_LONG).show();
+                                Intent directUserHome = new Intent(CreateNoteActivity.this, MainActivity.class);
                                 startActivity(directUserHome);
 
                             } else {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(UpdateStatusActivity.this);
+                                AlertDialog.Builder alert = new AlertDialog.Builder(CreateNoteActivity.this);
                                 alert.setMessage(e.getMessage());
                                 alert.setTitle("Sorry");
                                 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

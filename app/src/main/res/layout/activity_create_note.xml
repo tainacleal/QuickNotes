@@ -10,14 +10,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:hint="Quick note"
+        android:hint="@string/hint_create_note_edittext"
         android:gravity="top"
         android:id="@+id/updateStatusBox"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Note"
+        android:text="@string/create_note_button"
         android:background="@drawable/red_button"
         style="@style/button_text"
         android:id="@+id/updateButton"

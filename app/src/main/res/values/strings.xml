@@ -7,5 +7,16 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_create_note">Create Note</string>
     <string name="title_activity_note_details">Edit Note</string>
+    <string name="hint_create_note_edittext">Quick note</string>
+    <string name="create_note_button">Create Note</string>
+    <string name="hint_username_edittext">Username</string>
+    <string name="hint_email_edittext">Email</string>
+    <string name="hint_password_edittext">Password</string>
+    <string name="login_button">Login</string>
+    <string name="signup_textview">Don\'t have an account yet? Sign up!</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="update_note_button">Update</string>
+    <string name="date_textview">Date</string>
+    <string name="note_textview">Note</string>
 
 </resources>

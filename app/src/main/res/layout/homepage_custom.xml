@@ -8,9 +8,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dateHP"
-        android:text="Date"
+        android:text="@string/date_textview"
         android:gravity="center"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:drawableLeft="@drawable/ic_note"
         android:layout_marginTop="10dp"/>
@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/statusHP"
-        android:text="Comment"
-        android:textSize="20dp"
+        android:text="@string/note_textview"
+        android:textSize="20sp"
         android:layout_marginLeft="35dp"
         android:layout_marginBottom="10dp"/>
 

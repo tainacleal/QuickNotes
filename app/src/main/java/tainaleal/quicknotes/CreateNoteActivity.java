@@ -20,27 +20,27 @@ import com.parse.SaveCallback;
 
 public class CreateNoteActivity extends Activity {
 
-    protected EditText updatedStatus;
-    protected Button buttonUpdate;
+    protected EditText newNote;
+    protected Button buttonCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        updatedStatus = (EditText)findViewById(R.id.updateStatusBox);
-        buttonUpdate = (Button)findViewById(R.id.updateButton);
+        newNote = (EditText)findViewById(R.id.updateStatusBox);
+        buttonCreate = (Button)findViewById(R.id.updateButton);
 
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+        buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 String userName = currentUser.getUsername();
-                String status = updatedStatus.getText().toString();
+                String note = newNote.getText().toString();
 
-                if (status.isEmpty()) {
+                if (note.isEmpty()) {
                     AlertDialog.Builder alert = new AlertDialog.Builder(CreateNoteActivity.this);
-                    alert.setMessage("Status can't be empty.");
+                    alert.setMessage("Note can't be empty.");
                     alert.setTitle("Oops!");
                     alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
@@ -50,16 +50,15 @@ public class CreateNoteActivity extends Activity {
                     });
                     AlertDialog dialogAlert = alert.create();
                     dialogAlert.show();
-                }
-                else {
-                    ParseObject statusObject = new ParseObject("Status");
-                    statusObject.put("newStatus", status);
+                } else {
+                    ParseObject statusObject = new ParseObject("Note");
+                    statusObject.put("newNote", note);
                     statusObject.put("user", userName);
                     statusObject.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-                                Toast.makeText(CreateNoteActivity.this, "Status Updated!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(CreateNoteActivity.this, "Note created!", Toast.LENGTH_LONG).show();
                                 Intent directUserHome = new Intent(CreateNoteActivity.this, MainActivity.class);
                                 startActivity(directUserHome);
 
@@ -81,29 +80,5 @@ public class CreateNoteActivity extends Activity {
                 }
             }
         });
-    }
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_update_status, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

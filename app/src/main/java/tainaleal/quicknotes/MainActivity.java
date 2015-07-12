@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -20,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends ListActivity {
 
-    protected List<ParseObject> status;
+    protected List<ParseObject> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +28,14 @@ public class MainActivity extends ListActivity {
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("Status");
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Note");
             query.whereEqualTo("user", currentUser.getUsername()).orderByDescending("updatedAt");
             query.findInBackground(new FindCallback<ParseObject>() {
                 @Override
-                public void done(List<ParseObject> statusObject, ParseException e) {
+                public void done(List<ParseObject> notesObject, ParseException e) {
                     if (e == null){
-                        status = statusObject;
-                        StatusAdapter adapter = new StatusAdapter(getListView().getContext(), status);
+                        notes = notesObject;
+                        NotesAdapter adapter = new NotesAdapter(getListView().getContext(), notes);
                         setListAdapter(adapter);
                     }
                 }
@@ -88,8 +87,8 @@ public class MainActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        ParseObject statusObject = status.get(position);
-        String objectId = statusObject.getObjectId();
+        ParseObject noteObject = notes.get(position);
+        String objectId = noteObject.getObjectId();
 
         Intent directUserDetail = new Intent(MainActivity.this, NoteDetailsActivity.class);
         directUserDetail.putExtra("objectId", objectId);

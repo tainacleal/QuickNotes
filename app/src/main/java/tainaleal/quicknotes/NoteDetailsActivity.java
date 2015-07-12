@@ -45,17 +45,17 @@ public class NoteDetailsActivity extends Activity {
 
         final Intent directUserHomePage = new Intent(NoteDetailsActivity.this, MainActivity.class);
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Status");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Note");
         query.getInBackground(objectId, new GetCallback<ParseObject>() {
             @Override
             public void done(final ParseObject parseObject, ParseException e) {
                 if (e == null) {
-                    updatedNote.setText(parseObject.getString("newStatus"));
+                    updatedNote.setText(parseObject.getString("newNote"));
 
                     updatedNoteButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            parseObject.put("newStatus", updatedNote.getText().toString());
+                            parseObject.put("newNote", updatedNote.getText().toString());
                             parseObject.saveInBackground();
                             startActivity(directUserHomePage);
                         }

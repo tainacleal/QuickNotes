@@ -14,14 +14,14 @@ import java.util.List;
 /**
  * Created by tainaleal on 1/24/15.
  */
-public class StatusAdapter extends ArrayAdapter<ParseObject> {
+public class NotesAdapter extends ArrayAdapter<ParseObject> {
     protected Context mContext;
-    protected List mStatus;
+    protected List mNotes;
 
-    public StatusAdapter(Context context, List status) {
-        super(context, R.layout.homepage_custom, status);
+    public NotesAdapter(Context context, List notes) {
+        super(context, R.layout.homepage_custom, notes);
         mContext = context;
-        mStatus = status;
+        mNotes = notes;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class StatusAdapter extends ArrayAdapter<ParseObject> {
             holder = new ViewHolder();
             holder.dateHomepage = (TextView) convertView
                     .findViewById(R.id.dateHP);
-            holder.statusHomepage = (TextView) convertView
+            holder.noteHomepage = (TextView) convertView
                     .findViewById(R.id.statusHP);
 
             convertView.setTag(holder);
@@ -44,22 +44,22 @@ public class StatusAdapter extends ArrayAdapter<ParseObject> {
 
         }
 
-        ParseObject statusObject = (ParseObject) mStatus.get(position);
+        ParseObject statusObject = (ParseObject) mNotes.get(position);
 
         // title
         String noteDate = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss").format(statusObject.getUpdatedAt());
         holder.dateHomepage.setText(noteDate);
 
         // content
-        String status = statusObject.getString("newStatus");
-        holder.statusHomepage.setText(status);
+        String note = statusObject.getString("newNote");
+        holder.noteHomepage.setText(note);
 
         return convertView;
     }
 
     public static class ViewHolder {
         TextView dateHomepage;
-        TextView statusHomepage;
+        TextView noteHomepage;
 
     }
 

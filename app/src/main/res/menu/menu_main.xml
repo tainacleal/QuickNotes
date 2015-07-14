@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/updateStatus"
+    <item android:id="@+id/createNote"
         android:title="Create"
         android:orderInCategory="100"
         android:showAsAction="always"/>

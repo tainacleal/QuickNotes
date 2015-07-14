@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:hint="@string/hint_create_note_edittext"
         android:gravity="top"
-        android:id="@+id/updateStatusBox"/>
+        android:id="@+id/createNoteEdittext"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         android:text="@string/create_note_button"
         android:background="@drawable/red_button"
         style="@style/button_text"
-        android:id="@+id/updateButton"
+        android:id="@+id/createButton"
         android:layout_gravity="right" />
 
 </LinearLayout>

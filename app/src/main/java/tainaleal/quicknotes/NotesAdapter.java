@@ -33,9 +33,9 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
                     R.layout.homepage_custom, null);
             holder = new ViewHolder();
             holder.dateHomepage = (TextView) convertView
-                    .findViewById(R.id.dateHP);
+                    .findViewById(R.id.dateItemList);
             holder.noteHomepage = (TextView) convertView
-                    .findViewById(R.id.statusHP);
+                    .findViewById(R.id.noteItemList);
 
             convertView.setTag(holder);
         } else {

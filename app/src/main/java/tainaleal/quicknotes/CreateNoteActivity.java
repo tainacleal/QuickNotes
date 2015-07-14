@@ -28,8 +28,8 @@ public class CreateNoteActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        newNote = (EditText)findViewById(R.id.updateStatusBox);
-        buttonCreate = (Button)findViewById(R.id.updateButton);
+        newNote = (EditText)findViewById(R.id.createNoteEdittext);
+        buttonCreate = (Button)findViewById(R.id.createButton);
 
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +51,10 @@ public class CreateNoteActivity extends Activity {
                     AlertDialog dialogAlert = alert.create();
                     dialogAlert.show();
                 } else {
-                    ParseObject statusObject = new ParseObject("Note");
-                    statusObject.put("newNote", note);
-                    statusObject.put("user", userName);
-                    statusObject.saveInBackground(new SaveCallback() {
+                    ParseObject noteObject = new ParseObject("Note");
+                    noteObject.put("newNote", note);
+                    noteObject.put("user", userName);
+                    noteObject.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {

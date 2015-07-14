@@ -51,7 +51,6 @@ public class NoteDetailsActivity extends Activity {
             public void done(final ParseObject parseObject, ParseException e) {
                 if (e == null) {
                     updatedNote.setText(parseObject.getString("newNote"));
-
                     updatedNoteButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.parse.ParseObject;
-
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by tainaleal on 1/24/15.
@@ -44,14 +44,14 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
 
         }
 
-        ParseObject statusObject = (ParseObject) mNotes.get(position);
+        ParseObject noteObject = (ParseObject) mNotes.get(position);
 
-        // title
-        String noteDate = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss").format(statusObject.getUpdatedAt());
+        // date
+        String noteDate = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss", Locale.US).format(noteObject.getUpdatedAt());
         holder.dateHomepage.setText(noteDate);
 
-        // content
-        String note = statusObject.getString("newNote");
+        // note
+        String note = noteObject.getString("newNote");
         holder.noteHomepage.setText(note);
 
         return convertView;

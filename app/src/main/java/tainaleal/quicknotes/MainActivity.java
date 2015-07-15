@@ -7,13 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
 import java.util.List;
 
 
@@ -40,15 +38,10 @@ public class MainActivity extends ListActivity {
                     }
                 }
             });
-
-
-
         } else {
             Intent directUserLogin = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(directUserLogin);
         }
-
-
     }
 
     @Override
@@ -77,7 +70,6 @@ public class MainActivity extends ListActivity {
                 Intent directUserLogin = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(directUserLogin);
                 break;
-
         }
 
         return super.onOptionsItemSelected(item);

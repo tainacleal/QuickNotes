@@ -77,17 +77,8 @@ public class NoteDetailsActivity extends Activity {
                                                 startActivity(directUserHomePage);
                                             }
                                             else {
-                                                AlertDialog.Builder alert = new AlertDialog.Builder(NoteDetailsActivity.this);
-                                                alert.setMessage(e.getMessage());
-                                                alert.setTitle("Sorry");
-                                                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.dismiss();
-                                                    }
-                                                });
-                                                AlertDialog dialogAlert = alert.create();
-                                                dialogAlert.show();
+                                                MainActivity.WarningAlert.CreateAlert(NoteDetailsActivity.this, "Sorry",
+                                                        e.getMessage(), "Ok");
                                             }
                                         }
                                     });
@@ -101,7 +92,6 @@ public class NoteDetailsActivity extends Activity {
                                     dialog.dismiss();
                                 }
                             });
-
                             AlertDialog dialogAlert = alert.create();
                             dialogAlert.show();
                         }

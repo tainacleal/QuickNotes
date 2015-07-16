@@ -1,8 +1,6 @@
 package tainaleal.quicknotes;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,17 +34,7 @@ public class CreateNoteActivity extends Activity {
                 String note = newNote.getText().toString();
 
                 if (note.isEmpty()) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(CreateNoteActivity.this);
-                    alert.setMessage("Note can't be empty.");
-                    alert.setTitle("Oops!");
-                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    AlertDialog dialogAlert = alert.create();
-                    dialogAlert.show();
+                    MainActivity.WarningAlert.CreateAlert(CreateNoteActivity.this, "Oops!", "Note can't be empty", "Ok");
                 } else {
                     ParseObject noteObject = new ParseObject("Note");
                     noteObject.put("newNote", note);
@@ -60,17 +48,7 @@ public class CreateNoteActivity extends Activity {
                                 startActivity(directUserHome);
 
                             } else {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(CreateNoteActivity.this);
-                                alert.setMessage(e.getMessage());
-                                alert.setTitle("Sorry");
-                                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                });
-                                AlertDialog dialogAlert = alert.create();
-                                dialogAlert.show();
+                                MainActivity.WarningAlert.CreateAlert(CreateNoteActivity.this, "Sorry", e.getMessage(), "Ok");
                             }
                         }
                     });

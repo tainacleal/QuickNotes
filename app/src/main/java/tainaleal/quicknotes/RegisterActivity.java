@@ -1,8 +1,6 @@
 package tainaleal.quicknotes;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +23,6 @@ public class RegisterActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
 
         //Initialize
         userName = (EditText)findViewById(R.id.usernameRegister);
@@ -51,23 +48,11 @@ public class RegisterActivity extends Activity {
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
-                            // Hooray! Let them use the app now.
                             Toast.makeText(RegisterActivity.this, "Success!", Toast.LENGTH_LONG).show();
                             Intent directUserHomePage = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(directUserHomePage);
                         } else {
-
-                                AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
-                                alert.setMessage(e.getMessage());
-                                alert.setTitle("Sorry");
-                                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                });
-                                AlertDialog alertDialog = alert.create();
-                                alertDialog.show();
+                            MainActivity.WarningAlert.CreateAlert(RegisterActivity.this, "Sorry", e.getMessage(), "Ok");
                         }
                     }
                 });

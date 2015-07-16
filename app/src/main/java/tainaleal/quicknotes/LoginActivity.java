@@ -1,8 +1,6 @@
 package tainaleal.quicknotes;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-
 
 public class LoginActivity extends Activity {
 
@@ -45,23 +42,11 @@ public class LoginActivity extends Activity {
                             Intent directUserHome = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(directUserHome);
                         } else {
-                            AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
-                            alert.setMessage(e.getMessage());
-                            alert.setTitle("Sorry");
-                            alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-
-                            AlertDialog dialogAlert = alert.create();
-                            dialogAlert.show();
+                            MainActivity.WarningAlert.CreateAlert(LoginActivity.this, "Sorry", e.getMessage(), "Ok");
                         }
                     }
                 });
             }
-
         });
 
         signup.setOnClickListener(new View.OnClickListener() {

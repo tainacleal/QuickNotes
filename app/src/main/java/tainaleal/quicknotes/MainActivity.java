@@ -1,6 +1,9 @@
 package tainaleal.quicknotes;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -85,5 +88,21 @@ public class MainActivity extends ListActivity {
         Intent directUserDetail = new Intent(MainActivity.this, NoteDetailsActivity.class);
         directUserDetail.putExtra("objectId", objectId);
         startActivity(directUserDetail);
+    }
+
+    public static class WarningAlert{
+        public static void CreateAlert(Context context, String title, String message, String positive){
+            AlertDialog.Builder alert = new AlertDialog.Builder(context);
+            alert.setMessage(message);
+            alert.setTitle(title);
+            alert.setPositiveButton(positive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alertDialog = alert.create();
+            alertDialog.show();
+        }
     }
 }

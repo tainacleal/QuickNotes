@@ -32,16 +32,12 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
             convertView = LayoutInflater.from(mContext).inflate(
                     R.layout.homepage_custom, null);
             holder = new ViewHolder();
-            holder.dateHomepage = (TextView) convertView
-                    .findViewById(R.id.dateItemList);
-            holder.noteHomepage = (TextView) convertView
-                    .findViewById(R.id.noteItemList);
+            holder.dateHomepage = (TextView) convertView.findViewById(R.id.dateItemList);
+            holder.noteHomepage = (TextView) convertView.findViewById(R.id.noteItemList);
 
             convertView.setTag(holder);
         } else {
-
             holder = (ViewHolder) convertView.getTag();
-
         }
 
         ParseObject noteObject = (ParseObject) mNotes.get(position);
@@ -60,7 +56,5 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
     public static class ViewHolder {
         TextView dateHomepage;
         TextView noteHomepage;
-
     }
-
 }

@@ -13,10 +13,6 @@ public class UseParse extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Parse.enableLocalDatastore(getApplicationContext());
         Parse.initialize(this, "HfbG5LRFGD2RfVFIUfMq8EN2jyJrE0zgzvbXhCMJ", "h4VLvZEWddbosW24JvpqzjW6UWd39143OJ975Ttn");
-        ParseUser.enableAutomaticUser();
-        ParseACL.setDefaultACL(new ParseACL(), true);
-
     }
 }
